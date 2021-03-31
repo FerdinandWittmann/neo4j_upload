@@ -65,6 +65,18 @@ func (r *RoomAd) Update() (err error) {
 //InsertAddress inserts the roomads address
 func (r *RoomAd) InsertAddress() (err error) {
 	req := neo4j_extended.NewNeoRequest()
+	if (*r).Address.PostCode == 0 {
+		return errors.New("@InsertAddress: PostCode equals 0")
+	}
+	if (*r).Address.Streetname == "" {
+		return errors.New("@InsertAddress: Streetname is empty")
+	}
+	if (*r).Address.City == "" {
+		return errors.New("@InsertAddress: City is empty")
+	}
+	if (*r).Address.Country == "" {
+		return errors.New("@InsertAddress: Country is empty")
+	}
 	address := r.Address
 	matchNode, err := addMatchIDCypher("m", "RoomAd", r.ID, req)
 	if err != nil {
@@ -130,6 +142,9 @@ func (r *RoomAd) InsertAddress() (err error) {
 
 //InsertPrize insert prize node and relation to neo4j
 func (r *RoomAd) InsertPrize() (err error) {
+	if (*r).Prize.Value == 0 || (*r).Prize.Value == 1 || (*r).Prize.Value > 2900 {
+		return errors.New("@InsertPrize: prize to small or to large")
+	}
 	req := neo4j_extended.NewNeoRequest()
 	prize := r.Prize
 	matchNode, err := addMatchIDCypher("m", "RoomAd", r.ID, req)

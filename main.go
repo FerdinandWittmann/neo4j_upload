@@ -96,6 +96,9 @@ func processRoomAd(roomAd RoomAd, hashCount int) {
 		printError(processRoomAd, err)
 		return
 	}
+	if URLHashHex == "aac31256a89869bc91e4553c53c892d566300625" {
+		fmt.Println("WTF")
+	}
 	//Check if exisit in neo4j
 	cypherText := "MATCH (r:RoomAd {ID: \"" + URLHashHex + "\" }) RETURN r"
 	res, err := neo4j_extended.SendSimple(*session, cypherText)
