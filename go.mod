@@ -5,7 +5,6 @@ go 1.15
 require (
 	github.com/FerdinandWittmann/neo4j_extended v0.0.0-20210312160544-527e53a7a26f
 	github.com/google/go-cmp v0.5.5 // indirect
-	github.com/kelvins/geocoder v0.0.0-20200113010004-f579500e9e27
 	github.com/kr/text v0.2.0 // indirect
 	github.com/mitchellh/mapstructure v1.4.1
 	github.com/neo4j/neo4j-go-driver v1.8.3

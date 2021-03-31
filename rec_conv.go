@@ -1,4 +1,4 @@
-package main
+package neo4j_upload
 
 import (
 	"fmt"
